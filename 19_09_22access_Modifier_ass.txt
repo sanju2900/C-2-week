@@ -1,0 +1,230 @@
+// Access Modifier
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace project1
+{
+    public partial class Form1 : Form
+    {
+        public class SavingAccount
+
+        {
+
+            string AccountNo, AccountHolder;
+
+            double BalanceAmount, InterestRate;
+
+
+
+            internal void OpenAccount(string name, string number, double amount)
+
+            {
+
+                AccountHolder = name;
+
+                AccountNo = number;
+
+                BalanceAmount = amount;
+
+            }
+
+
+
+            public void debit(double amount)
+
+            {
+
+                BalanceAmount -= amount;
+
+            }
+
+
+
+            public void credit(double amount)
+
+            {
+
+                BalanceAmount += amount;
+
+            }
+
+
+
+            public void ApplyInterest()
+
+            {
+
+                BalanceAmount += BalanceAmount * InterestRate;
+
+            }
+
+
+
+            public void ShowBalance()
+
+            {
+
+                MessageBox.Show("Your balance amount is Rs " + BalanceAmount);
+
+            }
+
+
+
+            internal void ShowAccount()
+
+            {
+
+                MessageBox.Show("Account Holder's Name : " + AccountHolder);
+
+                MessageBox.Show("Account Number : " + AccountNo);
+
+            }
+        }
+                public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SavingAccount myAc = new SavingAccount();
+
+            myAc.OpenAccount("Sanjana", "1234567", 10000.00);
+
+            myAc.credit(1000.00);
+
+            myAc.debit(100.00);
+
+            myAc.ShowBalance();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SavingAccount myAc = new SavingAccount();
+
+            myAc.OpenAccount("Krishu", "876544321458", 10000.00);
+
+            myAc.credit(900.00);
+
+            myAc.debit(500.00);
+
+            myAc.ShowAccount();
+        }
+    }
+}
+
+_______________________________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________________________________
+
+//Create a button which will show array element each time on click
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace project2
+{
+    public partial class Form1 : Form
+    {
+        int[] weights = new int[] { 12, 34, 32, 55, 98, 123, 90 };
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < weights.Length - 1; i++)
+
+            {
+
+                MessageBox.Show("Weights[" + i + "]=" + weights[i]);
+
+            }
+        }
+    }
+}
+
+_______________________________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________________________________
+
+//2 button you have to create 1 for height and other for weight
+//OUTPUT :: height =20
+//		volume =3
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace project2
+{
+    public partial class Form1 : Form
+    {
+        // int[] weights = new int[] { 12, 34, 32, 55, 98, 123, 90 };
+        public class Bottle
+        {
+            int Height;
+            int  Volume;
+            public Bottle()
+            {
+                Height = 24; //{22,33,21,57,87 };
+                Volume = 5;//{3,4,5,6,7};
+            }
+
+            public void ShowBottle()
+            {
+                
+                MessageBox.Show("Height of bottle : " + Height);
+
+            }
+            public void VShowBottle()
+            {
+
+                MessageBox.Show("Volume of bottle : " + Volume + "liter");
+            }
+
+        }
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Bottle bottle = new Bottle();
+            bottle.ShowBottle();
+
+         }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Bottle bottle = new Bottle();
+            bottle.VShowBottle();
+        }
+    }
+}
+
+
+
+

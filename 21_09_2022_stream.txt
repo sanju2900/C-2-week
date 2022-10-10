@@ -1,0 +1,16 @@
+/*HW1:Write a program in C# that reads items names and items prices of 50 items from KB and stores 
+them in a file (prices.txt) line-by-line. After that, the program reads the previous file and writes
+ the items that are priced over $100 in a separate file (prices_100.txt).
+Example of prices.txt contents:
+Rice 125
+Tomato paste 50
+Cooking Oil 30
+Flour 120
+The contents of prices_100.txt will be:
+Rice 125
+Flour 120
+*/
+
+
+
+

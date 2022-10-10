@@ -1,0 +1,151 @@
+//Pointer
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace StructPro
+{
+    public struct Student
+    {
+        unsafe string StudentName;
+        int Marks, MaxMarks;
+        public void student(string n, int m, int max)
+        {
+            StudentName = n;
+            Marks = m;
+            MaxMarks = max;
+        }
+        public void ShowStudent()
+        {
+           double percent;
+            percent = (Marks % MaxMarks);
+            unsafe
+            {
+                MessageBox.Show("Name of Student : " + StudentName);
+                MessageBox.Show("Percentage : " + percent);
+            }
+        }
+    }
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            unsafe
+            {
+                int* myptr;
+                int myvar = 111;
+                myptr = &myvar;
+                MessageBox.Show("Value stored in 1nd Var is " + *myptr);
+                MessageBox.Show("Address stored in mypointer is " + (uint)myptr);
+                for (int i = 0; i < 3; i++)
+                {
+                    *myptr -= 1;
+                    MessageBox.Show("First var is : " + *myptr);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            unsafe
+            {
+                int* myptr2;
+                int myVar2 = 234;
+                myptr2 = &myVar2;
+                MessageBox.Show("Value stored in 2nd Var is " + *myptr2);
+                MessageBox.Show("Address stored in mypointer is " + (uint)myptr2);
+                for (int i = 0; i < 3; i++)
+                {
+                    *myptr2 -= 1;
+                    MessageBox.Show("Second var is : " + *myptr2);
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            unsafe
+            {
+                char two = 'A';
+                char three = 'D';
+                char* psecond = &two;
+                char* pthird = &three;
+                long pointerdifference =pthird - psecond;
+                MessageBox.Show("pthird=" + (uint)pthird);
+                MessageBox.Show("psecond=" + (uint)psecond);
+                MessageBox.Show("pthird - psecond=" + pointerdifference);
+            }
+
+        }
+    }
+}
+
+___________________________________________________________________________________________________________________
+
+//Pointer Structure
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace cube
+{
+    public partial class Form1 : Form
+    {
+        struct Cube 
+            {
+            double side;
+            public Cube(double s)
+            {
+                side = s;
+            }
+            public double ShowVolume()
+            {
+                double v = side * side * side;
+                return v;
+            }
+        }
+
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            unsafe
+            {
+                Cube* pointToCube;
+                Cube c = new Cube(3);
+                pointToCube = &c;
+
+
+
+                MessageBox.Show("Volume : " + (*pointToCube).ShowVolume());
+            }
+        }
+    }
+}
+
+

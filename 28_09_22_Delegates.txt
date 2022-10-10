@@ -1,0 +1,310 @@
+using System;
+
+namespace LambdaExpression
+{
+    
+
+    // delegate ...  function pointer
+    public delegate void cal(int a);
+    public delegate int arithmatic(int a, int b);
+
+    internal class Program
+    {
+
+        public void square(int a)
+        {
+            int sq = a * a;
+            Console.WriteLine("Square = " + sq);
+        }
+
+        public void cube(int a)
+        {
+            int sq = a * a *a;
+            Console.WriteLine("Cube = " + sq);
+        }
+        public static int add(int p , int q)
+        {
+           return p + q;
+        }
+
+        public static int sub(int p, int q)
+        {
+            return p - q;
+        }
+        
+
+
+        // delegates.... function pointer ...
+        // Anonymous function....  without name.... 2.0 
+        static void Main(string[] args)
+        {
+
+            Program p = new Program();
+            cal obj = new cal(p.cube);
+
+            arithmatic ar = new arithmatic(Program.add);
+
+            obj.Invoke(5);
+             
+
+            Console.WriteLine(ar.Invoke(40, 50));
+
+
+            ar = sub;
+            Console.WriteLine(ar.Invoke(60, 30)); 
+        }
+    }
+}
+
+///Anonymous function
+
+using System;
+
+namespace LambdaExpression
+{
+    
+    // delegate ...  function pointer
+    public delegate int cal(int a);  // single cast 
+    public delegate int arithmatic(int a, int b);  // multicast 
+
+    internal class Program
+    {
+        // delegates.... function pointer ...
+        // Anonymous function....  without name.... 2.0 
+        static void Main(string[] args)
+        {
+
+            // Anonymous method
+            cal obj = delegate (int p) 
+            {
+                //Console.WriteLine("Square = "+ p*p);
+                return p * p;
+
+            };
+            Console.WriteLine("Enter a number to find its square");
+            int num = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(obj.Invoke(num)); ;
+
+            //obj = delegate (int q)
+            //{ Console.WriteLine(q * q * q); };
+            //obj.Invoke(20);
+
+        }
+    }
+}
+
+ // Write a statement lambda to calculate sum of 1 to n number.
+
+using System.ComponentModel;
+
+namespace Lambda
+{
+  
+
+        public delegate void simple_interest( int t);
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+                simple_interest obj = (pr) => 
+                 {
+                     int sum = 0;
+                     for (int i = 1; i <= pr; ++i)
+                     {
+                         sum += i;
+                     }
+
+                     Console.WriteLine("Result : " + sum );
+                 };
+                Console.WriteLine("Enter p : ");
+                int s = Convert.ToInt32(Console.ReadLine());
+                
+
+                obj.Invoke(s);
+
+            }
+        }
+    
+}
+
+//Write an expression lambda to find greater between two numbers.
+
+using System.ComponentModel;
+
+namespace Lambda
+{
+    
+    public delegate int simple_interest( int t ,int p);
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+            simple_interest obj = (pr, pt) => pr > pt ? pr: pt;
+                 
+                Console.WriteLine("Enter num : ");
+                int s = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter num2 1: ");
+            int q = Convert.ToInt32(Console.ReadLine());
+            
+            //obj.Invoke(s,q);
+            Console.WriteLine(obj.Invoke(s, q));
+
+            }
+        }
+    
+}
+
+//Write an lambda expression to swap given two numbers.
+
+using System.ComponentModel;
+
+namespace Lambda
+{
+    // Write an expression lambda to find greater between two numbers.
+
+
+    public delegate void simple_interest( int t ,int p);
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+            simple_interest obj = (pr, pt) =>
+            {
+                Console.WriteLine("Values before swap...");
+                Console.WriteLine(pr.ToString());
+                Console.WriteLine(pt.ToString());
+                pr = pr + pt;
+                pt = pr-pt;
+                pr = pr-pt;
+                Console.WriteLine("Values after swap...");
+                Console.WriteLine(pr.ToString());
+                Console.WriteLine(pt.ToString());
+                //Console.WriteLine(obj.Invoke(s, q));
+            };
+                 
+                Console.WriteLine("Enter num : ");
+                int s = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter num2 1: ");
+            int q = Convert.ToInt32(Console.ReadLine());
+            
+            obj.Invoke(s,q);
+            
+
+            }
+        }
+    
+}
+
+
+//Write an anonymous function to check given number is prime or not.
+
+namespace Anonymous_ass
+{
+    
+    public delegate void cal(int a);  // single cast 
+ 
+
+    internal class Program
+    {
+        
+        static void Main(string[] args)
+        {
+
+            // Anonymous method
+            cal obj = delegate (int n)
+            {
+                // Check if n=1 or n=0
+                if (n <= 1)
+                    Console.WriteLine("False ");
+                // Check if n=2 or n=3
+                if (n == 2 || n == 3)
+                    Console.WriteLine("True ");
+                // Check whether n is divisible by 2 or 3
+                if (n % 2 == 0 || n % 3 == 0)
+                    Console.WriteLine("False ");
+                // Check from 5 to square root of n
+                // Iterate i by (i+6)
+                for (int i = 5; i*i <= n; i = i + 6)
+                    if (n % i == 0 || n % (i + 2) == 0)
+                        Console.WriteLine("False ");
+
+                Console.WriteLine("True ");
+               
+
+
+            };
+            Console.WriteLine("Enter a number to find is it prime or not");
+            int num = int.Parse(Console.ReadLine());
+
+            //  Console.WriteLine(obj.Invoke(num)); ;
+            obj.Invoke(num);
+
+
+
+        }
+    }
+}
+
+//Write an lambda expression to print all prime numbers up to n
+
+
+namespace Anonymous_ass
+{
+    
+    internal class Program
+    {
+
+        // delegate ...  function pointer
+        public delegate void cal(int a);
+        public delegate bool cal1(int s);
+
+        static void Main(string[] args)
+        {
+            cal1 isPrime=(n) =>
+            {
+                // Corner case
+                if (n <= 1)
+                    return false;
+
+                // Check from 2 to n-1
+                for (int i = 2; i < n; i++)
+                    if (n % i == 0)
+                        return false;
+
+                return true;
+            };
+           
+            // Anonymous method
+            cal obj = (p) =>
+            {
+                for (int i = 2; i <= p; i++)
+                    if (isPrime(i))
+                    {
+                       
+                        Console.WriteLine(i + " ");
+                    }
+              
+
+            };
+           
+            Console.WriteLine("Enter n Number :");
+            int n1 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Prime numbers are :");
+            obj.Invoke(n1);
+
+
+
+        }
+    }
+}
+
+
+
+//Write an lambda expression to sort given array.
+
+
+

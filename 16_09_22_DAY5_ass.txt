@@ -1,0 +1,200 @@
+////Hiding Bank Account No Program
+using System;
+
+namespace PassWord
+{
+public class PassWord
+{
+    public static void Main(string[] args)
+    {
+        string num;
+        Console.Write("Enter number : ");
+        num= Console.ReadLine();
+        int len = num.Length;
+        Console.Write("Account_Number: ");
+        for(int i=0;i<len;i++)
+        {
+            if(i<len-4)
+             Console.Write("*");
+             else
+              Console.Write(num[i]);
+        }
+         
+          Console.ReadLine();
+    }
+}
+}
+
+OUTPUT:
+Enter number : 12345678934567
+Account_Number: **********4567
+
+
+____________________________________________________________________________________________________________________
+____________________________________________________________________________________________________________________
+
+//RunTime Polymorphism:
+
+using System;
+class Four
+    {
+       string res_number;
+        public void start()
+        {
+            Console.WriteLine("four wheeler started\n");
+        }
+        public void brake()
+        {
+            Console.WriteLine("Brake applied\n");
+        }
+        public void change_gear(int x)
+        {
+           Console.WriteLine("four wheeler is in "+x+"rd gear\n");
+        }
+
+    }
+
+
+
+class Taxi:Four
+  {
+      string color;
+      double rate,distance;
+      public new void start(){
+         Console.WriteLine("taxi started") ;
+      }
+      public Taxi( int a = 0, int b = 0) {
+         rate = a;
+         distance = b;
+      }
+      public double calculate_fare(){
+          return (rate*distance);
+      }
+  }
+  class Car:Four{
+      string model,owner;
+       public new void m(){
+         Console.WriteLine("model : 24rd") ;
+      }
+       public new void o(){
+         Console.WriteLine("owner: nisha") ;
+      }
+  }
+  class Program {
+      static void Main(string[] args) {
+         Car c=new Car();
+         c.start();
+         c.brake();
+         c.change_gear(3);
+         c.m();
+         c.o();
+         Taxi r = new Taxi(10, 7);
+         r.start();
+         double a = r.calculate_fare();
+         Console.WriteLine("Fare: {0}",a);
+         
+         Console.ReadKey();
+      }
+   }
+
+
+output:
+four wheeler started
+
+Brake applied
+
+four wheeler is in 3rd gear
+
+model : 24rd
+owner: nisha
+taxi started
+Fare: 70
+
+______________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________
+
+
+///Abstraction:
+
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+
+using System;
+
+ public abstract class Solid
+{
+    public abstract double Volume();
+    public abstract double SurfaceArea();
+    public void show()
+    {
+        Console.WriteLine("Volume :" + Volume());
+        Console.WriteLine("SurfaceArea  :" + SurfaceArea());
+    }
+}
+public class Cube:Solid
+ {
+   double side;
+    public Cube( double a) {
+         this.side=a;
+      }
+    public override double Volume()
+    {
+        return (side*side*side);
+    }
+      public override double SurfaceArea()
+    {
+        return (6*side*side);
+    }
+     
+ }
+  
+class Cylinder:Solid
+ {
+     int radius,height;
+    public Cylinder( int a, int b) {
+         this.radius = a;
+        this.height = b;
+      }
+    public override double Volume()
+    {
+        return ((22/7)*radius*radius*height);
+    }
+      public override double SurfaceArea()
+    {
+        return (2*(22/7)*radius*height)+(2*(22/7)*radius*radius);
+    }
+     
+ }
+    
+public class Areas
+{
+    public static void Main(string[] args)
+    {
+        Cube c = new Cube(3);
+        c.show();
+      //  c.side =3;
+        //c.Volume();
+       // Console.WriteLine(c.Cube_Volume());
+        //Console.WriteLine(c.Cube_SurfaceArea());
+ 
+        Cylinder c1 = new Cylinder(2,3);
+        c1.show();
+       // c1.radius =3;
+//        c1.height =5;
+  //      Console.WriteLine(c1.Cy_Volume());
+    //    Console.WriteLine(c1.Cy_SurfaceArea());
+ 
+         Console.ReadKey();
+    }
+}
+
+
+OUTPUT
+mono /tmp/rxCBngeN9L.exe
+Volume :27
+SurfaceArea  :54
+Volume :36
+SurfaceArea  :60
+
+

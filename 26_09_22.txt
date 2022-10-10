@@ -1,0 +1,121 @@
+//1.Write a program in C# Sharp to append some text to an existing file.
+
+
+
+using System;
+using System.IO;
+
+class Test
+{
+    public static void Main()
+    {
+       // string path = @"c:\temp\MyTest.txt";
+          string path = @"C:\\Users\\kumari.sanjana\\OneDrive - Entain Group\\Desktop\\ivy training\\testing.txt";
+
+                // This text is added only once to the file.
+                if (!File.Exists(path))
+        {
+            // Create a file to write to.
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine("Hello");
+                sw.WriteLine("And");
+                sw.WriteLine("Welcome");
+            }
+        }
+
+        // This text is always added, making the file longer over time
+        // if it is not deleted.
+        using (StreamWriter sw = File.AppendText(path))
+        {
+            sw.WriteLine("This");
+            sw.WriteLine("is Extra");
+            sw.WriteLine("Text");
+        }
+
+        // Open the file to read from.
+        using (StreamReader sr = File.OpenText(path))
+        {
+            string s = "";
+            while ((s = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(s);
+            }
+        }
+    }
+}
+
+
+
+
+ //2.Write a program in C# Sharp to create a list with StudentID and StudentMarks as key value pair; 
+use any suitable collection. Display the list on the screen. 
+
+using System;
+using System.Collections.Generic;
+public class Demo
+{
+    public static void Main()
+    {
+        IDictionary<string,int> d = new Dictionary<string, int>();
+        d.Add(new KeyValuePair<string,int>("Ui01",  71));
+        d.Add(new KeyValuePair<string, int>("Ui02", 76));
+        d.Add(new KeyValuePair<string, int>("Ui03", 67));
+        d.Add(new KeyValuePair<string, int>("Ui04", 98));
+        d.Add(new KeyValuePair<string, int>("Ui05", 81));
+        foreach (KeyValuePair<string,int> ele in d)
+        {
+            Console.WriteLine("Key = {0}, Value = {1}", ele.Key, ele.Value);
+        }
+    }
+}
+
+
+//3. The output should have list of IDs, Names and Pass Status of Students like [12, Rahul Y],
+ [14, Kiran, N], etc. Write a C# program and use a Generic method to display the values; 
+display atleast 5 students.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ques_03
+{    public class Tuple<T1, T2, T3,T4>   
+	 {        
+		public T1 Item1; 
+		public T2 Item2;        
+		public T3 Item3;
+	        public T4 Item4;
+        public Tuple(T1 x,T2 y,T3 z,T4 w)
+        {
+            Item1 = x;
+            Item2 = y;
+            Item3 = z;
+            Item4 = w;
+        }
+    }
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {          
+
+
+         Tuple<int,int,string,string> tuple1 = new Tuple<int,int,string,string>(1,12,"Mukesh","Y");         Tuple<int,int, string, string> tuple2 = new Tuple<int,int, string, string>(2,15, "Poojita", "N");         Tuple<int,int, string, string> tuple3 = new Tuple<int,int, string, string>(3,12, "Nisha", "Y");         Tuple<int,int, string, string> tuple4 = new Tuple<int,int, string, string>(4,12, "anand", "N");         Tuple<int,int, string, string> tuple5 = new Tuple<int,int, string, string>(5,12, "shilpa", "Y");
+
+            Console.Write($"{tuple1.Item1}, [{tuple1.Item2} ,{tuple1.Item3},{tuple1.Item4}]");            Console.WriteLine();
+
+            Console.Write($"{tuple2.Item1}, [{tuple2.Item2} ,{tuple2.Item3},{tuple2.Item4}]");            Console.WriteLine();
+
+            Console.Write($"{tuple3.Item1}, [{tuple3.Item2} ,{tuple3.Item3},{tuple3.Item4}]");            Console.WriteLine();
+
+            Console.Write($"{tuple4.Item1}, [{tuple4.Item2} ,{tuple4.Item3},{tuple4.Item4}]");            Console.WriteLine();
+
+            Console.Write($"{tuple5.Item1}, [{tuple5.Item2} ,{tuple5.Item3},{tuple5.Item4}]");            Console.WriteLine();
+
+        }
+    }
+}
+
